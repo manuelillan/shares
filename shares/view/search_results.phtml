@@ -1,0 +1,34 @@
+<br><br>
+<center>
+<?php
+if ($error_msg){
+?>
+<h2 class="text-danger">Se ha producido un error: <?php echo $error_msg ?></h2>
+<?php
+}else{
+?>
+<div class="row mx-auto" style="width: 500px">
+<?php 
+    foreach($results as $result){
+        $platform = $result["platform"];
+        $data = $result["data"];
+?>
+    <div class="card card-default">
+        <div class="card-heading" style="text-align: center">
+            <img src="<?php echo $platform->image_url ?>" 
+                 width="40px" 
+                 alt="<?php echo $platform->name ?>"
+                 title="<?php echo $platform->name?>"/></div>
+        <div class="card-body">
+            <h2><?php echo $data->shares ?></h2>
+            <small><?php echo $data->created_at ?></small>
+        </div>
+    </div>
+        
+<?php
+    }//end for
+?>
+</div>
+</center>
+<?php   
+}

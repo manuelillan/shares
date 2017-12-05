@@ -1,0 +1,48 @@
+<div class="row mt-5">
+    <div class="text">
+        Escribe una URL y te mostraremos el número de "Shares" que tiene en las redes sociales:
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        <input class="form-control" name="url" id="url" type="text" placeholder="Aquí una URL" pattern="https?.//.+\..+"/>
+    </div>
+    <div class="col-md-2">
+        <button class="btn bt-primary" id="search"><i class="glyphicon glyphicon-search"></i>Busca</button>
+    </div>
+</div>
+
+<div id="results"></div>
+
+<script>
+    $("#search").on("click", function (ev) {
+        ev.stopPropagation();
+        var url = $("#url").val();
+        if (url) {
+            if(!/^https?:\/\//.test(url)){
+                alert("La URL no parece válida");
+                $("#url").val("");
+                return false;
+            }
+            $("#results").html("Cargando...");
+            $.ajax({
+                data: {
+                    url: url
+                },
+                url: "controller/search.php",
+                type: "post",
+                success: function (data) {
+                    $("#results").html(data);
+                }
+            })
+        } else {
+            alert("Escribe una URL primero")
+        }
+    });
+    $("#url").keypress(function(e){
+        console.log(e.which);
+        if(e.which===13){
+            $("#search").click();
+        }
+    });
+</script>

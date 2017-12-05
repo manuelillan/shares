@@ -1,0 +1,51 @@
+        
+<h1>
+    Faltan los datos de la BDD.
+</h1>
+<h3>
+    Introduce los datos correctos.
+</h3>
+<?php 
+if ($install_error){ 
+?>
+<h5 class="text-danger"><?php echo $install_error ?></h2>
+<?php
+} //endif
+?>
+<form name="install_options" method="post">
+    <div class="row">
+        <div class="col-sm-3">
+            DB Sever:
+        </div>
+        <div class="col-md">
+            <input class="form-control" name="db_server" type="text" value="localhost"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            DB Name:
+        </div>
+        <div class="col-md">
+            <input class="form-control" name="db_name" type="text" value="shares"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            DB User:
+        </div>
+        <div class="col-md">
+            <input class="form-control" name="db_user" type="text"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            DB Password:
+        </div>
+        <div class="col-md">
+            <input class="form-control" name="db_password" type="password"/>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-lg btn-primary"/>
+</form>
+
